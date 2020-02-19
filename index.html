@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        src = "https://code.jquery.com/jquery.js"
+    </script>
+</head>
+
+<body>
+
+    <script>
+        // var letter = "";
+        // document.addEventListener("keydown", function(e) {
+        //     letter = e.key;
+        //     console.log(letter);
+        // });
+        var guesses = 10;
+        var currentLetter = "a";
+        var guessedLetters = [];
+        var winNum = 0;
+        var loseNum = 0;
+        document.addEventListener("keydown", function(e) {
+            var letter = e.key;
+            if (letter === currentLetter) {
+                winNum++;
+            } else {
+                guessedLetters += letter;
+                loseNum++;
+            }
+            guesses--;
+            console.log(guessedLetters);
+            console.log(guesses);
+        });
+    </script>
+
+</body>
+
+</html>
