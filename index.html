@@ -5,37 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script>
-        src = "https://code.jquery.com/jquery.js"
-    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="assets/Java/game.js"></script>
 </head>
 
 <body>
 
-    <script>
-        // var letter = "";
-        // document.addEventListener("keydown", function(e) {
-        //     letter = e.key;
-        //     console.log(letter);
-        // });
-        var guesses = 10;
-        var currentLetter = "a";
-        var guessedLetters = [];
-        var winNum = 0;
-        var loseNum = 0;
-        document.addEventListener("keydown", function(e) {
-            var letter = e.key;
-            if (letter === currentLetter) {
-                winNum++;
-            } else {
-                guessedLetters += letter;
-                loseNum++;
-            }
-            guesses--;
-            console.log(guessedLetters);
-            console.log(guesses);
-        });
-    </script>
+    <div>
+        <h1 id="Header"></h1>
+        <p id="question"></p>
+        <p id="wins"></p>
+        <p id="loses"></p>
+        <p id="guessNum"></p>
+        <p id="guesses"></p>
+    </div>
 
 </body>
 

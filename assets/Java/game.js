@@ -10,46 +10,74 @@
 // 5. Add lose counter
 //      * if the player loses increase the count by one
 // 6. Call reset once guesses run out/player guesses wor right
-src = "https://code.jquery.com/jquery.js"
 
-var names = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+$(document).ready(function() {
 
-var currentLetter = "";
+    var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-var unansweredString = "";
+    var currentLetter = "";
 
-var guessedLetters = [];
+    var guessedLetters = [];
 
-var guesses = 10;
+    var guesses = 0;
 
-var ranNum = 0;
+    var ranNum = 0;
 
-var winNum = 0;
+    var winNum = 0;
 
-var loseNum = 0;
+    var loseNum = 0;
 
-document.addEventListener("keydown", function(e) {
-    var letter = e.key;
 
-    for (let i = 0; i < guessedLetters.length; i++) {
-        if (letter === currentLetter && letter !== guessedLetters[i]) {
+    document.addEventListener("keydown", function(e) {
+
+        var letter = e.key;
+
+        console.log(letter);
+
+        console.log("inside if statement");
+        if (letter === currentLetter) {
             winNum++;
-        } else {
-            guessedLetters += letter;
+            console.log("inside win for loop");
+            reset();
+        } else if (guesses === 0) {
             loseNum++;
+            reset();
+            console.log("inside loses for loop");
+        } else if (!guessedLetters.includes(letter)) {
+            guessedLetters.push(letter);
+            console.log("inside guessed for loop");
+            console.log(guessedLetters);
+            guesses--;
         }
-    }
-    guesses--;
+
+        displayNumbers();
+    });
+
+    $("#Header").text("The Psychic Game");
+
+    $("#Question").text("Guess what letter I'm thinking of");
+
+    function displayNumbers() {
+
+        $("#wins").text("Wins: " + winNum);
+
+        $("#loses").text("loses: " + loseNum);
+
+        $("#guessNum").text("Guesses Left: " + guesses);
+
+        $("#guesses").text("Your Guesses so far: " + guessedLetters);
+
+    };
+    displayNumbers();
+    reset();
+
+    function reset() {
+
+        ranNum = Math.floor((Math.random() * 25));
+        guesses = 10;
+        guessedLetters = [];
+
+    };
+
+    currentLetter = letters[ranNum];
 });
-
-currentName = names[ranNum];
-
-for (let unansweredWord = 0; unansweredWord < array.length; unansweredWord++) {
-    unansweredString += "_ "
-
-}
-
-for (let guesses = 0; guesses < 10; guesses++) {
-
-
-}
